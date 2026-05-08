@@ -5,91 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Operativo Persán</title>
     <style>
-        :root { --blue: #004687; --light-blue: #00a1e4; --bg: #f4f7f9; }
+        :root { --blue: #004687; --light-blue: #00a1e4; --bg: #f4f7f9; --white: #ffffff; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: var(--bg); color: #333; }
         
         #header { 
-            height: 400px; background-size: cover; background-position: center;
+            height: 350px; background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center;
             align-items: center; color: white; text-align: center;
             box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.3);
         }
 
-        .container { max-width: 1000px; margin: -60px auto 60px; padding: 0 20px; }
-        .section { background: white; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        h2 { color: var(--blue); border-left: 5px solid var(--light-blue); padding-left: 15px; margin-bottom: 25px; }
+        /* ESTRUCTURA DE DOS COLUMNAS */
+        .container { 
+            max-width: 1200px; margin: -50px auto 60px; padding: 0 20px; 
+            display: grid; grid-template-columns: 1fr 320px; gap: 20px;
+        }
 
-        /* PERSÁN: ESTILO PÓSTER */
-        .poster-persan { text-align: center; margin-bottom: 25px; }
-        .poster-persan img { width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        /* ADAPTACIÓN MÓVIL */
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; margin-top: 20px; }
+            #header { height: 250px; }
+        }
+
+        .section { background: var(--white); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        h2 { color: var(--blue); border-left: 5px solid var(--light-blue); padding-left: 15px; margin-bottom: 20px; }
+
+        /* ESTILO BOTONES LATERALES */
+        .btn-side { 
+            display: block; width: 100%; padding: 15px; margin-bottom: 12px; border-radius: 10px;
+            text-decoration: none; color: white; font-weight: bold; text-align: center; transition: 0.3s; box-sizing: border-box;
+        }
+        .btn-randstad { background: #24355b; }
+        .btn-care { background: var(--blue); font-size: 1.1rem; }
+        .btn-side:hover { transform: scale(1.02); opacity: 0.9; }
 
         /* TABLA PERSÁN */
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         th { background: #f8f9fa; padding: 15px; text-align: left; color: var(--blue); border-bottom: 2px solid #eee; }
         td { padding: 15px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
 
-        /* BENEFICIOS RANDSTAD */
-        .grid-randstad { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card-r { border: 1px solid #eee; padding: 20px; border-radius: 12px; text-align: center; background: #fff; transition: 0.3s; }
-        .card-r:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .btn { display: inline-block; background: var(--blue); color: white; padding: 8px 20px; border-radius: 5px; text-decoration: none; margin-top: 10px; font-weight: bold; }
+        /* BENEFICIOS Y SEGURIDAD */
+        .grid-randstad { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .card-r { border: 1px solid #eee; padding: 15px; border-radius: 12px; text-align: center; background: #fff; }
+        img { max-width: 100%; border-radius: 15px; }
 
-        /* SEGURIDAD GRAN FORMATO */
-        .poster-seguridad { text-align: center; }
-        .poster-seguridad img { width: 100%; max-width: 800px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-
-        /* FAQ / QUIZ INTERACTIVO */
+        /* FAQ */
         .qa-card { background: #fcfdfe; border: 1px solid #eef2f7; border-radius: 10px; margin-bottom: 10px; cursor: pointer; }
-        .qa-header { padding: 15px; font-weight: bold; color: var(--blue); display: flex; justify-content: space-between; align-items: center; }
-        .qa-content { padding: 0 15px; max-height: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease; color: #555; line-height: 1.5; }
-        .qa-card.active { border-color: var(--light-blue); }
-        .qa-card.active .qa-content { padding: 15px; max-height: 300px; opacity: 1; border-top: 1px solid #eee; background: #fafafa; }
+        .qa-header { padding: 15px; font-weight: bold; color: var(--blue); display: flex; justify-content: space-between; }
+        .qa-content { padding: 0 15px; max-height: 0; opacity: 0; overflow: hidden; transition: 0.3s ease; }
+        .qa-card.active .qa-content { padding: 15px; max-height: 300px; opacity: 1; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
 
     <div id="header">
-        <h1 id="texto-bienvenida" style="font-size: 2.5rem; margin: 0;">Cargando Portal...</h1>
+        <h1 id="texto-bienvenida" style="font-size: 2.2rem; margin: 0; padding: 0 20px;">Cargando Portal...</h1>
+        <p>Calle Pino Albar, Polígono El Pino</p>
     </div>
 
     <div class="container">
         
-        <div class="section">
-            <h2>📦 Lote de Productos Persán</h2>
-            <div id="persan-poster" class="poster-persan">
+        <div class="main-content">
+            
+            <div class="section">
+                <h2>📦 Lote de Productos Persán</h2>
+                <div id="persan-poster" style="text-align:center; margin-bottom:20px;"></div>
+                <table id="tabla-persan">
+                    <thead>
+                        <tr><th>Producto</th><th>Fecha</th><th>Horario</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🛡️ Seguridad y PRL</h2>
+                <div id="seguridad-display"></div>
+            </div>
+
+            <div class="section" style="border: 2px solid var(--blue);">
+                <h2 style="border:none; padding:0; text-align:center;">💙 🤝 RANDSTAD RIS CARE 🤝 💙</h2>
+                <div style="text-align:center; margin-bottom:20px;">
+                    <img src="https://i.ibb.co/v4m8v3M/image-484bd5.png" alt="Randstad RIS CARE" style="max-width:100%; border-radius:10px;">
                 </div>
-            <table id="tabla-persan">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Fecha de Entrega</th>
-                        <th>Horario</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    </tbody>
-            </table>
+                <p style="text-align:center; color:#555;">Tu bienestar es nuestra prioridad. Ayúdanos a mejorar el entorno de trabajo participando en nuestra encuesta mensual.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJaJqCI_SY5wPoQKE3mhcue0-_gD51cNT_7LnKe2VTg1-RJQ/viewform" target="_blank" class="btn-side btn-care">
+                    📝 Realizar Encuesta CARE
+                </a>
+            </div>
+
+            <div class="section">
+                <h2>🎁 Club de Ventajas Randstad</h2>
+                <div id="grid-randstad" class="grid-randstad"></div>
+            </div>
+
+            <div class="section">
+                <h2>💡 QUIZ PRL - Preguntas Frecuentes</h2>
+                <div id="qa-container"></div>
+            </div>
         </div>
 
-        <div class="section">
-            <h2>🎁 Club de Ventajas Randstad</h2>
-            <div id="grid-randstad" class="grid-randstad"></div>
-        </div>
+        <div class="sidebar">
+            <div class="section" style="padding:15px;">
+                <h3 style="color:var(--blue); margin-top:0; font-size:1rem;">🌦️ Tiempo en El Pino</h3>
+                <a class="weatherwidget-io" href="https://forecast7.com/es/37d39n5d98/sevilla/" data-label_1="SEVILLA" data-label_2="Polígono El Pino" data-font="Roboto" data-icons="Climacons Animated" data-theme="pure" >SEVILLA Polígono El Pino</a>
+                <script>
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                </script>
+            </div>
 
-        <div class="section">
-            <h2>🛡️ Seguridad y PRL</h2>
-            <div id="seguridad-display" class="poster-seguridad"></div>
-        </div>
-
-        <div class="section">
-            <h2>💡 QUIZ PRL - Preguntas Frecuentes</h2>
-            <div id="qa-container"></div>
+            <div class="section" style="padding:15px;">
+                <h3 style="color:var(--blue); margin-top:0; font-size:1rem;">🔗 Enlaces Rápidos</h3>
+                <a href="https://www.randstad.es/candidatos/consultar-nominas/" target="_blank" class="btn-side btn-randstad">
+                    📄 Mis Nóminas
+                </a>
+                <a href="#" class="btn-side" style="background:#e67e22;">
+                    ☀️ Solicitar Día Libre
+                </a>
+            </div>
         </div>
 
     </div>
 
     <script>
-        // TU URL DE GOOGLE APPS SCRIPT
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw_P9xLSgrdrvnleHiaBEbnLE7AgRqJ2OQfTUMw4zgXxtBriC3vJgCExWEE0VTKTh0f/exec";
 
         async function cargarPortal() {
@@ -97,79 +135,39 @@
                 const res = await fetch(WEB_APP_URL);
                 const data = await res.json();
 
-                // --- 1. INICIO ---
                 if(data.Inicio && data.Inicio[0]) {
                     document.getElementById('header').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('${data.Inicio[0].Imagen_Encabezado}')`;
                     document.getElementById('texto-bienvenida').innerText = data.Inicio[0].Texto_Bienvenida;
                 }
 
-                // --- 2. PERSÁN (Imagen Grande + Tabla) ---
-                const tPersan = document.querySelector('#tabla-persan tbody');
-                const pPersan = document.getElementById('persan-poster');
-                
-                if(data.Persán && data.Persán.length > 0) {
-                    // Usamos la imagen de la primera fila para el póster grande
+                if(data.Persán) {
                     if(data.Persán[0].Foto_Carga) {
-                        pPersan.innerHTML = `<img src="${data.Persán[0].Foto_Carga}" alt="Lote del mes">`;
+                        document.getElementById('persan-poster').innerHTML = `<img src="${data.Persán[0].Foto_Carga}">`;
                     }
-                    
+                    const t = document.querySelector('#tabla-persan tbody');
                     data.Persán.forEach(item => {
-                        // Limpiamos la fecha para quitar el formato T22:00:00...
-                        const fechaLimpia = item.Fecha ? item.Fecha.split('T')[0] : "Pendiente";
-                        
-                        tPersan.innerHTML += `
-                            <tr>
-                                <td><b style="color:var(--blue);">${item.Producto}</b></td>
-                                <td>${fechaLimpia}</td>
-                                <td>${item.Horario}</td>
-                            </tr>`;
+                        const f = item.Fecha ? item.Fecha.split('T')[0] : "Pendiente";
+                        t.innerHTML += `<tr><td><b>${item.Producto}</b></td><td>${f}</td><td>${item.Horario}</td></tr>`;
                     });
                 }
 
-                // --- 3. RANDSTAD ---
-                const gRandstad = document.getElementById('grid-randstad');
+                const gR = document.getElementById('grid-randstad');
                 data.Randstad.forEach(item => {
-                    gRandstad.innerHTML += `
-                        <div class="card-r">
-                            <img src="${item.Imagen_Logo}" style="height:40px; margin-bottom:10px;">
-                            <h3 style="margin:10px 0; color:var(--blue);">${item.Beneficio}</h3>
-                            <p style="color:#666; font-size:0.9rem;">${item.Descuento}</p>
-                            <a href="${item.Link_App}" target="_blank" class="btn">Ver Ventaja</a>
-                        </div>`;
+                    gR.innerHTML += `<div class="card-r"><img src="${item.Imagen_Logo}" style="height:30px;"><p><b>${item.Beneficio}</b></p></div>`;
                 });
 
-                // --- 4. SEGURIDAD ---
                 const sDisp = document.getElementById('seguridad-display');
                 data.Seguridad.forEach(s => {
-                    sDisp.innerHTML += `
-                        <div style="margin-bottom:40px;">
-                            <img src="${s.infografia_prl || s.Infografia_PRL}" style="width:100%;">
-                            <div style="text-align:left; margin-top:20px;">
-                                <h3 style="color:var(--blue); margin-bottom:10px;">${s.titulo || s.Título}</h3>
-                                <p style="color:#555; line-height:1.6;">${s.consejo || s.Consejo}</p>
-                            </div>
-                        </div>`;
+                    sDisp.innerHTML += `<div style="margin-bottom:30px;"><img src="${s.infografia_prl || s.Infografia_PRL}"><h3>${s.titulo || s.Título}</h3><p>${s.consejo || s.Consejo}</p></div>`;
                 });
 
-                // --- 5. QUIZ / FAQ ---
                 const qaCont = document.getElementById('qa-container');
                 data.FAQ.forEach(item => {
-                    qaCont.innerHTML += `
-                        <div class="qa-card" onclick="this.classList.toggle('active')">
-                            <div class="qa-header">
-                                <span>${item.Pregunta}</span>
-                                <span style="font-size:1.2rem;">+</span>
-                            </div>
-                            <div class="qa-content">${item.Respuesta}</div>
-                        </div>`;
+                    qaCont.innerHTML += `<div class="qa-card" onclick="this.classList.toggle('active')"><div class="qa-header"><span>${item.Pregunta}</span><span>+</span></div><div class="qa-content">${item.Respuesta}</div></div>`;
                 });
 
-            } catch (e) { 
-                console.error("Error cargando datos:", e); 
-                document.getElementById('texto-bienvenida').innerText = "Error al conectar con el servidor";
-            }
+            } catch (e) { console.error(e); }
         }
-        
         cargarPortal();
     </script>
 </body>
