@@ -15,10 +15,9 @@
             box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.3);
         }
 
-        /* ESTRUCTURA */
         .container { 
             max-width: 1200px; margin: -50px auto 60px; padding: 0 20px; 
-            display: grid; grid-template-columns: 1fr 320px; gap: 20px;
+            display: grid; grid-template-columns: 1fr 350px; gap: 25px;
         }
 
         @media (max-width: 900px) {
@@ -29,28 +28,23 @@
         .section { background: var(--white); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         h2 { color: var(--blue); border-left: 5px solid var(--light-blue); padding-left: 15px; margin-bottom: 20px; }
 
-        /* BOTONES */
         .btn-side { 
             display: block; width: 100%; padding: 15px; margin-bottom: 12px; border-radius: 10px;
             text-decoration: none; color: white; font-weight: bold; text-align: center; transition: 0.3s; box-sizing: border-box;
         }
         .btn-randstad { background: #24355b; }
         .btn-care { background: var(--blue); font-size: 1.1rem; }
-        .btn { display: inline-block; background: var(--blue); color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; margin-top: 10px; font-weight: bold; font-size: 0.85rem; }
+        
+        .btn-ventaja { display: inline-block; background: var(--blue); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; margin-top: 10px; font-weight: bold; }
 
-        /* TABLA PERSÁN */
         table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         th { background: #f8f9fa; padding: 15px; text-align: left; color: var(--blue); border-bottom: 2px solid #eee; }
         td { padding: 15px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
 
-        /* GRID RANDSTAD (EL QUE FUNCIONABA) */
         .grid-randstad { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-        .card-r { border: 1px solid #eee; padding: 20px; border-radius: 12px; text-align: center; background: #fff; transition: 0.3s; }
-        .card-r:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        
+        .card-r { border: 1px solid #eee; padding: 20px; border-radius: 12px; text-align: center; background: #fff; }
         img { max-width: 100%; border-radius: 15px; }
 
-        /* FAQ */
         .qa-card { background: #fcfdfe; border: 1px solid #eef2f7; border-radius: 10px; margin-bottom: 10px; cursor: pointer; }
         .qa-header { padding: 15px; font-weight: bold; color: var(--blue); display: flex; justify-content: space-between; }
         .qa-content { padding: 0 15px; max-height: 0; opacity: 0; overflow: hidden; transition: 0.3s ease; }
@@ -67,7 +61,6 @@
     <div class="container">
         
         <div class="main-content">
-            
             <div class="section">
                 <h2>📦 Lote de Productos Persán</h2>
                 <div id="persan-poster" style="text-align:center; margin-bottom:20px;"></div>
@@ -86,7 +79,7 @@
 
             <div class="section" style="border: 2px solid var(--blue); padding: 0; overflow: hidden;">
                 <div style="width: 100%;">
-                    <img src="portada-care.jpg.png" alt="Encuesta CARE" style="width: 100%; display: block; border-radius: 0;">
+                    <img src="portada-care.png" alt="Encuesta CARE" style="width: 100%; display: block; border-radius: 0;">
                 </div>
                 <div style="padding: 25px; text-align: center;">
                     <p style="color:#555; font-size: 1rem; margin-bottom: 20px;">
@@ -110,12 +103,10 @@
         </div>
 
         <div class="sidebar">
-            
             <div class="section" style="padding:15px; border: 1px solid #e0e0e0;">
-                <h3 style="color:var(--blue); margin-top:0; font-size:1.1rem; text-align:center;">🌦️ El tiempo en la fábrica</h3>
-                <p style="font-size:0.8rem; color:#666; text-align:center; margin-bottom:15px;">Polígono El Pino</p>
+                <h3 style="color:var(--blue); margin-top:0; font-size:1.2rem; text-align:center; margin-bottom:15px;">🌦️ El tiempo en la fábrica</h3>
                 
-                <a class="weatherwidget-io" href="https://forecast7.com/es/37d39n5d98/sevilla/" data-label_1="SEVILLA" data-label_2="Calle Pino Albar" data-font="Roboto" data-icons="Climacons Animated" data-mode="Forecast" data-days="7" data-theme="pure" style="display: block; min-height: 400px;">EL TIEMPO</a>
+                <a class="weatherwidget-io" href="https://forecast7.com/es/37d39n5d98/sevilla/" data-label_1="POLÍGONO EL PINO" data-label_2="Sevilla" data-font="Roboto" data-icons="Climacons Animated" data-mode="Forecast" data-days="5" data-theme="pure" style="display: block; min-height: 450px;">EL TIEMPO</a>
                 <script>
                 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
                 </script>
@@ -124,10 +115,9 @@
             <div class="section" style="padding:20px;">
                 <h3 style="color:var(--blue); margin-top:0; font-size:1.1rem; margin-bottom:15px;">🔗 Enlaces Rápidos</h3>
                 <a href="https://www.randstad.es/candidatos/consultar-nominas/" target="_blank" class="btn-side btn-randstad">
-                    📄 Mis Nóminas
+                    📄 Consultar mis Nóminas
                 </a>
             </div>
-
         </div>
     </div>
 
@@ -139,13 +129,11 @@
                 const res = await fetch(WEB_APP_URL);
                 const data = await res.json();
 
-                // --- 1. INICIO ---
                 if(data.Inicio && data.Inicio[0]) {
                     document.getElementById('header').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('${data.Inicio[0].Imagen_Encabezado}')`;
                     document.getElementById('texto-bienvenida').innerText = data.Inicio[0].Texto_Bienvenida;
                 }
 
-                // --- 2. PERSÁN ---
                 if(data.Persán) {
                     if(data.Persán[0].Foto_Carga) {
                         document.getElementById('persan-poster').innerHTML = `<img src="${data.Persán[0].Foto_Carga}">`;
@@ -153,49 +141,33 @@
                     const t = document.querySelector('#tabla-persan tbody');
                     data.Persán.forEach(item => {
                         const f = item.Fecha ? item.Fecha.split('T')[0] : "Pendiente";
-                        t.innerHTML += `<tr><td><b style="color:var(--blue);">${item.Producto}</b></td><td>${f}</td><td>${item.Horario}</td></tr>`;
+                        t.innerHTML += `<tr><td><b>${item.Producto}</b></td><td>${f}</td><td>${item.Horario}</td></tr>`;
                     });
                 }
 
-                // --- 3. RANDSTAD (REVERTIDO AL ORIGINAL) ---
                 const gR = document.getElementById('grid-randstad');
                 data.Randstad.forEach(item => {
+                    // AQUÍ USAMOS EL ENLACE DEL SCRIPT/EXCEL
                     gR.innerHTML += `
                         <div class="card-r">
                             <img src="${item.Imagen_Logo}" style="height:40px; margin-bottom:10px;">
                             <h3 style="margin:10px 0; color:var(--blue); font-size:1.1rem;">${item.Beneficio}</h3>
                             <p style="color:#666; font-size:0.9rem;">${item.Descuento}</p>
-                            <a href="${item.Link_App}" target="_blank" class="btn">Ver Ventaja</a>
+                            <a href="${item.Link_App}" target="_blank" class="btn-ventaja">Ver Ventaja</a>
                         </div>`;
                 });
 
-                // --- 4. SEGURIDAD ---
                 const sDisp = document.getElementById('seguridad-display');
                 data.Seguridad.forEach(s => {
-                    sDisp.innerHTML += `
-                        <div style="margin-bottom:30px;">
-                            <img src="${s.infografia_prl || s.Infografia_PRL}">
-                            <div style="text-align:left; margin-top:15px;">
-                                <h3 style="color:var(--blue);">${s.titulo || s.Título}</h3>
-                                <p style="color:#555; line-height:1.6;">${s.consejo || s.Consejo}</p>
-                            </div>
-                        </div>`;
+                    sDisp.innerHTML += `<div style="margin-bottom:30px;"><img src="${s.infografia_prl || s.Infografia_PRL}"><h3>${s.titulo || s.Título}</h3><p>${s.consejo || s.Consejo}</p></div>`;
                 });
 
-                // --- 5. FAQ ---
                 const qaCont = document.getElementById('qa-container');
                 data.FAQ.forEach(item => {
-                    qaCont.innerHTML += `
-                        <div class="qa-card" onclick="this.classList.toggle('active')">
-                            <div class="qa-header"><span>${item.Pregunta}</span><span>+</span></div>
-                            <div class="qa-content">${item.Respuesta}</div>
-                        </div>`;
+                    qaCont.innerHTML += `<div class="qa-card" onclick="this.classList.toggle('active')"><div class="qa-header"><span>${item.Pregunta}</span><span>+</span></div><div class="qa-content">${item.Respuesta}</div></div>`;
                 });
 
-            } catch (e) { 
-                console.error("Error:", e); 
-                document.getElementById('texto-bienvenida').innerText = "Error de conexión";
-            }
+            } catch (e) { console.error(e); }
         }
         cargarPortal();
     </script>
