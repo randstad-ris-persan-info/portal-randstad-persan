@@ -34,7 +34,6 @@
         }
         .btn-randstad { background: #24355b; }
         .btn-care { background: var(--blue); font-size: 1.1rem; }
-        
         .btn-ventaja { display: inline-block; background: var(--blue); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; margin-top: 10px; font-weight: bold; }
 
         table { width: 100%; border-collapse: collapse; margin-top: 15px; }
@@ -65,9 +64,7 @@
                 <h2>📦 Lote de Productos Persán</h2>
                 <div id="persan-poster" style="text-align:center; margin-bottom:20px;"></div>
                 <table id="tabla-persan">
-                    <thead>
-                        <tr><th>Producto</th><th>Fecha</th><th>Horario</th></tr>
-                    </thead>
+                    <thead><tr><th>Producto</th><th>Fecha</th><th>Horario</th></tr></thead>
                     <tbody></tbody>
                 </table>
             </div>
@@ -82,12 +79,8 @@
                     <img src="portada-care.png" alt="Encuesta CARE" style="width: 100%; display: block; border-radius: 0;">
                 </div>
                 <div style="padding: 25px; text-align: center;">
-                    <p style="color:#555; font-size: 1rem; margin-bottom: 20px;">
-                        Tu opinión nos ayuda a mejorar. Participa en la encuesta mensual para trabajadores.
-                    </p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJaJqCI_SY5wPoQKE3mhcue0-_gD51cNT_7LnKe2VTg1-RJQ/viewform" target="_blank" class="btn-side btn-care">
-                        📝 REALIZAR CUESTIONARIO CARE
-                    </a>
+                    <p style="color:#555; font-size: 1rem; margin-bottom: 20px;">Tu opinión nos ayuda a mejorar. Participa en la encuesta mensual para trabajadores.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJaJqCI_SY5wPoQKE3mhcue0-_gD51cNT_7LnKe2VTg1-RJQ/viewform" target="_blank" class="btn-side btn-care">📝 REALIZAR CUESTIONARIO CARE</a>
                 </div>
             </div>
 
@@ -103,20 +96,19 @@
         </div>
 
         <div class="sidebar">
-            <div class="section" style="padding:15px; border: 1px solid #e0e0e0;">
-                <h3 style="color:var(--blue); margin-top:0; font-size:1.2rem; text-align:center; margin-bottom:15px;">🌦️ El tiempo en la fábrica</h3>
+            <div class="section" style="padding:15px; border: 1px solid #e0e0e0; text-align: center;">
+                <h3 style="color:var(--blue); margin-top:0; font-size:1.2rem; margin-bottom:15px;">🌦️ El tiempo en la fábrica</h3>
                 
-                <a class="weatherwidget-io" href="https://forecast7.com/es/37d39n5d98/sevilla/" data-label_1="POLÍGONO EL PINO" data-label_2="Sevilla" data-font="Roboto" data-icons="Climacons Animated" data-mode="Forecast" data-days="5" data-theme="pure" style="display: block; min-height: 450px;">EL TIEMPO</a>
-                <script>
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-                </script>
+                <div id="c_8086053" class="clearfix">
+                    <script type="text/javascript" src="https://www.eltiempo.es/widget/widget_loader/8086053"></script>
+                </div>
+                
+                <p style="font-size: 0.8rem; color: #666; margin-top: 15px;">Previsión detallada para Polígono El Pino</p>
             </div>
 
             <div class="section" style="padding:20px;">
                 <h3 style="color:var(--blue); margin-top:0; font-size:1.1rem; margin-bottom:15px;">🔗 Enlaces Rápidos</h3>
-                <a href="https://www.randstad.es/candidatos/consultar-nominas/" target="_blank" class="btn-side btn-randstad">
-                    📄 Consultar mis Nóminas
-                </a>
+                <a href="https://www.randstad.es/candidatos/consultar-nominas/" target="_blank" class="btn-side btn-randstad">📄 Consultar mis Nóminas</a>
             </div>
         </div>
     </div>
@@ -135,9 +127,7 @@
                 }
 
                 if(data.Persán) {
-                    if(data.Persán[0].Foto_Carga) {
-                        document.getElementById('persan-poster').innerHTML = `<img src="${data.Persán[0].Foto_Carga}">`;
-                    }
+                    if(data.Persán[0].Foto_Carga) { document.getElementById('persan-poster').innerHTML = `<img src="${data.Persán[0].Foto_Carga}">`; }
                     const t = document.querySelector('#tabla-persan tbody');
                     data.Persán.forEach(item => {
                         const f = item.Fecha ? item.Fecha.split('T')[0] : "Pendiente";
@@ -147,7 +137,6 @@
 
                 const gR = document.getElementById('grid-randstad');
                 data.Randstad.forEach(item => {
-                    // AQUÍ USAMOS EL ENLACE DEL SCRIPT/EXCEL
                     gR.innerHTML += `
                         <div class="card-r">
                             <img src="${item.Imagen_Logo}" style="height:40px; margin-bottom:10px;">
